@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# N8N Complete Project - Script de Inicio Automático
+# Evolution API Project - Script de Inicio Automático
 # ===================================================
 
-echo "🚀 Iniciando N8N Complete Project..."
+echo "🚀 Iniciando Evolution API Project..."
 echo ""
 
 # Verificar si Docker está ejecutándose
@@ -32,13 +32,9 @@ echo "📊 Estado de los servicios:"
 docker-compose ps
 
 echo ""
-echo "🎉 ¡N8N Complete Project iniciado exitosamente!"
+echo "🎉 ¡Evolution API Project iniciado exitosamente!"
 echo ""
 echo "📱 Acceso a los servicios:"
-echo "   • N8N Automation: http://localhost:8080"
-echo "     Usuario: admin"
-echo "     Contraseña: admin123"
-echo ""
 echo "   • Evolution API: http://localhost:8081"
 echo "   • PostgreSQL: localhost:5432"
 echo ""

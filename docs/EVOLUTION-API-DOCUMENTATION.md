@@ -8,7 +8,6 @@ Evolution API es una solución completa para integrar WhatsApp Business en aplic
 
 ### **Servicios Desplegados:**
 - **Evolution API**: `http://localhost:8081`
-- **N8N Automation**: `http://localhost:8080`
 - **PostgreSQL Database**: `localhost:5432`
 - **Redis Cache**: `localhost:6379`
 
@@ -339,9 +338,6 @@ make status
 # Ver logs de Evolution API
 make logs-evolution
 
-# Ver logs de N8N
-make logs-n8n
-
 # Ver logs de PostgreSQL
 make logs-postgres
 
@@ -399,7 +395,6 @@ QRCODE_LIMIT=10
 ## 🔗 Integraciones Disponibles
 
 ### **Plataformas Compatibles:**
-- **N8N** - Automatización de flujos de trabajo
 - **Chatwoot** - Atención al cliente
 - **OpenAI** - Integración con IA
 - **Typebot** - Chatbots conversacionales
@@ -447,9 +442,6 @@ docker-compose logs -f
 
 # Solo Evolution API
 docker-compose logs -f evolution-api
-
-# Solo N8N
-docker-compose logs -f n8n
 
 # Solo PostgreSQL  
 docker-compose logs -f postgres
@@ -516,7 +508,7 @@ curl -H "apikey: evolution_api_key_2024" \
 #### **Base de Datos:**
 ```bash
 # Verificar conexión PostgreSQL
-docker exec -it n8n_postgres psql -U postgres -d evolutiondb -c "\dt"
+docker exec -it evolution_postgres psql -U postgres -d evolutiondb -c "\dt"
 
 # Backup de emergencia
 make backup
@@ -533,7 +525,6 @@ make backup
 ### **APIs Relacionadas:**
 - **WhatsApp Business API**: https://developers.facebook.com/docs/whatsapp
 - **Baileys Library**: https://github.com/WhiskeySockets/Baileys
-- **N8N Documentation**: https://docs.n8n.io
 
 ---
 

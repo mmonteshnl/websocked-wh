@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Initializing N8N Complete Project databases..."
+echo "Initializing Evolution API Project databases..."
 
 # Create Evolution API database and user
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
@@ -28,7 +28,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
     ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO evouser;
 EOSQL
 
-echo "✅ N8N Complete Project databases initialized successfully!"
+echo "✅ Evolution API Project databases initialized successfully!"
 echo "✅ Evolution API database: evolutiondb"
 echo "✅ Evolution API user: evouser"
 echo "✅ Schema permissions granted"

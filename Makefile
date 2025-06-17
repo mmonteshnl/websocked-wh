@@ -1,7 +1,7 @@
 .PHONY: help start up down restart logs status clean backup restore
 
 help: ## Show this help message
-	@echo 'N8N Complete Project - Comandos disponibles:'
+	@echo 'Evolution API Project - Comandos disponibles:'
 	@echo ''
 	@awk '/^[a-zA-Z\-\_0-9]+:/ { \
 		helpMessage = match(lastLine, /^## (.*)/); \
@@ -28,8 +28,6 @@ restart: ## Restart all services
 logs: ## Show logs for all services
 	docker-compose logs -f
 
-logs-n8n: ## Show N8N logs only
-	docker-compose logs -f n8n
 
 logs-postgres: ## Show PostgreSQL logs only
 	docker-compose logs -f postgres
@@ -45,17 +43,14 @@ clean: ## Remove all containers and volumes (WARNING: This will delete all data!
 	docker system prune -f
 
 backup: ## Backup PostgreSQL database
-	docker exec n8n_postgres pg_dump -U $$(grep POSTGRES_USER .env | cut -d '=' -f2) $$(grep POSTGRES_DB .env | cut -d '=' -f2) > backup_$$(date +%Y%m%d_%H%M%S).sql
+	docker exec evolution_postgres pg_dump -U $$(grep POSTGRES_USER .env | cut -d '=' -f2) $$(grep POSTGRES_DB .env | cut -d '=' -f2) > backup_$$(date +%Y%m%d_%H%M%S).sql
 
 restore: ## Restore PostgreSQL database (Usage: make restore FILE=backup_file.sql)
 	@if [ -z "$(FILE)" ]; then echo "Usage: make restore FILE=backup_file.sql"; exit 1; fi
-	docker exec -i n8n_postgres psql -U $$(grep POSTGRES_USER .env | cut -d '=' -f2) $$(grep POSTGRES_DB .env | cut -d '=' -f2) < $(FILE)
-
-shell-n8n: ## Access N8N container shell
-	docker exec -it n8n /bin/sh
+	docker exec -i evolution_postgres psql -U $$(grep POSTGRES_USER .env | cut -d '=' -f2) $$(grep POSTGRES_DB .env | cut -d '=' -f2) < $(FILE)
 
 shell-postgres: ## Access PostgreSQL container shell
-	docker exec -it n8n_postgres /bin/bash
+	docker exec -it evolution_postgres /bin/bash
 
 shell-evolution: ## Access Evolution API container shell
 	docker exec -it evolution_api /bin/bash
